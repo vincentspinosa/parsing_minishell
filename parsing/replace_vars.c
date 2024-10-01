@@ -87,7 +87,9 @@ char	*replace_vars(char *str, t_state *s)
 				next_var_value = get_var_value(&str[i + 1], s->env);
 				i += ft_strlen(next_var_value) - cut;
 			}
+			printf("next var value: %s\n", next_var_value);
 			str = ft_join_all(str, next_var_value, i_save, cut);
+			printf("str after join all: %s", str);
 			if (!str)
 				return (s->exit_code = 1, NULL);
 		}

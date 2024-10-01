@@ -20,19 +20,24 @@ char	*ft_join_all(char *line, char *var_value, int i_save, int cut)
 	char	*new_line;
 
 	temp_str = ft_substr(line, 0, i_save);
-	if (!temp_str)
-		return (NULL);
+	printf("temp str: %s\n", temp_str);
+	/* if (!temp_str)
+		return (NULL); */
 	pre_line = ft_strjoin(temp_str, var_value);
-	free(temp_str);
-	if (!pre_line)
-		return (NULL);
+	printf("pre_line: %s\n", pre_line);
+	//free(temp_str);
+	/* if (!pre_line)
+		return (NULL); */
 	temp_str = ft_strdup(&line[i_save + cut]);
-	if (temp_str)
-		return (free(pre_line), NULL);
+	printf("temp str 2: %s\n", temp_str);
+	/* if (temp_str)
+		return (free(pre_line), NULL); */
+	printf("making new line\n");
 	new_line = ft_strjoin(pre_line, temp_str);
-	free(pre_line);
-	free(temp_str);
-	if (!new_line)
-		return (NULL);
+	printf("new_line: %s\n", new_line);
+	/* free(pre_line);
+	free(temp_str); */
+	/* if (!new_line)
+		return (NULL); */
 	return (new_line);
 }
