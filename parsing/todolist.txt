@@ -8,6 +8,10 @@ régler leaks -> garbage collector
 
 ->
 
+protection mallocs + vérifier qu'on arrête bien tout si un seul échoue
+
+->
+
 norme
 
 ->
