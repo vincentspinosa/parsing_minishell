@@ -34,6 +34,7 @@ int	main(int ac, char **av, char **envp)
 // ./a.out "sleep 10 | sleep 10 | sleep 10 | sleep 10 | sleep 10               "
 // ./a.out "echo a | sleep 1 | echo >> LIMITER < aaa << bbb << a"
 // ./a.out "echo $LANG"
+// ./a.out "echo a|sleep 1|echo>>LIMITER<aaa<<bbb<<a"
 
 //ex non fonctionnels :
 // plupart des ex avec variables, mais il faut tester sur linux
