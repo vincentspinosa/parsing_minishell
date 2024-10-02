@@ -91,7 +91,7 @@ t_token ***ft_split_array_tokens(t_token **t_a, int type, t_state *s)
 		{
 			array[ima] = make_sub_array(&t_a[ita], (array_len(t_a) - ita), type, s);
 			if (!array[ima])
-				return (s->exit_code = 1, NULL);
+				return (NULL);
 			ita += array_len(array[ima]);
 			ima++;
 		}

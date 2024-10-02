@@ -62,7 +62,7 @@ t_token	**make_token_and_append(int type, char *str, t_token **array, t_state *s
 
 	token = make_token(type, str, s);
 	if (!token)
-		return (s->exit_code = 1, NULL);
+		return (NULL);
 	//printf("New token made\n");
 	//print_token(token);
 	token_array = append_array(token, array, s);

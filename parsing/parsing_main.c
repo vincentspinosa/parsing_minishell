@@ -182,7 +182,7 @@ t_token	***parseline(t_state *s, char *line)
 	//printf("Starting parseline()\n");
 	line = replace_vars(line, s);
 	if (!line)
-		return (s->exit_code = 1, NULL);
+		return (NULL);
 	//printf("Line after parseline :\n%s\n", line);
 	token_array = malloc(sizeof(t_token *));//ft_malloc(sizeof(t_token *), &(s->gc));
 	if (!token_array)
@@ -193,12 +193,12 @@ t_token	***parseline(t_state *s, char *line)
 	//printf("Starting to make array token\n");
 	token_array = make_token_array(line, token_array, s);
 	if (!token_array)
-		return (s->exit_code = 1, NULL);
+		return (NULL);
 	//print_array(token_array);
 	if (last_array_elem_valid(token_array) == 0)
 		return (s->exit_code = 2, NULL);
 	main_array = ft_split_array_tokens(token_array, PIPE, s);
 	if (!main_array)
-		return (s->exit_code = 1, NULL);
+		return (NULL);
 	return (main_array);
 }

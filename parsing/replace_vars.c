@@ -91,7 +91,7 @@ char	*replace_vars(char *str, t_state *s)
 			str = ft_join_all(str, next_var_value, i_save, cut);
 			//printf("str after join all: %s", str);
 			if (!str)
-				return (s->exit_code = 1, NULL);
+				return (NULL);
 		}
 	}
 	return (str);
