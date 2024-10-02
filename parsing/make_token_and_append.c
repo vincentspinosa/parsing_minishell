@@ -90,7 +90,8 @@ t_token	**make_str_and_append_array(char *line, int i, t_token **array, char sep
 	if (!str)
 		return (s->exit_code = 1, NULL);
 	ft_strlcpy(str, &line[i], (len + 1));
-	if (array_len(array) == 0 || array[array_len(array) - 1]->type == PIPE)
+	if (array_len(array) == 0 || array[array_len(array) - 1]->type == PIPE
+		|| (array_len(array) > 1 && array[array_len(array) - 1]->type == ARG && array[array_len(array) - 2]->type == HEREDOC))
 		type = CMD;
 	else
 		type = ARG;
