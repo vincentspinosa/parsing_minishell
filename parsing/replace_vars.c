@@ -31,7 +31,7 @@ int get_var_len(char *str, int start)
 	return (i);
 }
 
-static char *get_var_value(char *str, char **env)
+static char *get_var_value(char *str, char **env, int len)
 {
 	char	*value;
 	int		i;
@@ -40,12 +40,12 @@ static char *get_var_value(char *str, char **env)
 	i = 0;
 	while (env[i])
 	{
-		if (ft_strncmp(str, env[i], ft_strlen(str)) == 0
-			&& env[i][ft_strlen(str)] == '=')
+		if (ft_strncmp(str, env[i], len) == 0
+			&& env[i][len] == '=')
 		{
 			if (value)
 				free(value);
-			value = ft_strdup(&(env[i][ft_strlen(str) + 1]));
+			value = ft_strdup(&(env[i][len + 1]));
 		}
 		i++;
 	}
@@ -84,7 +84,7 @@ char	*replace_vars(char *str, t_state *s)
 			{
 				next_var_len = get_var_len(str, i + 1);
 				cut = next_var_len + 1;
-				next_var_value = get_var_value(&str[i + 1], s->env);
+				next_var_value = get_var_value(&str[i + 1], s->env, next_var_len);
 				i += ft_strlen(next_var_value) - cut;
 			}
 			//printf("next var value: %s\n", next_var_value);
