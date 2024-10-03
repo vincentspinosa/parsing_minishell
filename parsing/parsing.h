@@ -75,8 +75,8 @@ garbage_collector.c
 */
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_back(t_list **alst, t_list *new);
-void	*ft_malloc(size_t size, t_list *gc);
-void	destroy_gc(t_list *gc);
+void	*ft_malloc(size_t size, t_list **gc);
+void	destroy_gc(t_list **gc);
 
 /*
 make_token_and_append.c

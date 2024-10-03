@@ -41,30 +41,30 @@ void	ft_lstadd_back(t_list **alst, t_list *new)
 	ptr->next = new;
 }
 
-void	*ft_malloc(size_t size, t_list *gc)
+void	*ft_malloc(size_t size, t_list **gc)
 {
 	void	*space;
 
 	space = malloc(size);
 	if (!space)
 		return (NULL);
-	if (!gc)
-		*gc = *ft_lstnew(space);
+	if (!*gc)
+		*gc = ft_lstnew(space);
 	else
-		ft_lstadd_back(&gc, space);
+		ft_lstadd_back(gc, space);
 	return (space);
 }
 
-void	destroy_gc(t_list *gc)
+void	destroy_gc(t_list **gc)
 {
 	t_list	*temp;
 
-	while (gc)
+	while (*gc)
 	{
-		temp = (gc)->next;
-		if ((gc)->content)
-			free((gc)->content);
-		free(gc);
-		gc = temp;
+		temp = (*gc)->next;
+		if ((*gc)->content)
+			free((*gc)->content);
+		free(*gc);
+		*gc = temp;
 	}
 }
