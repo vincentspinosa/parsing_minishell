@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 20:45:15 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/02 18:36:32 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/03 03:22:10 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,12 @@ char	*replace_vars(char *str, t_state *s)
 	int		next_var_len;
 	int		cut;
 	char 	*next_var_value;
+	char	*prev_str;
 
 	sq = 0;
 	dq = 0;
 	i = 0;
+	next_var_value = NULL;
 	while (str[i])
 	{
 		i_save = i;
@@ -76,6 +78,8 @@ char	*replace_vars(char *str, t_state *s)
 		{
 			if (str[i + 1] == '?')
 			{
+				if (next_var_value)
+					free(next_var_value);
 				next_var_value = ft_itoa(s->exit_code);
 				cut = 2;
 				i += ft_strlen(next_var_value) - cut;
@@ -84,15 +88,21 @@ char	*replace_vars(char *str, t_state *s)
 			{
 				next_var_len = get_var_len(str, i + 1);
 				cut = next_var_len + 1;
+				if (next_var_value)
+					free(next_var_value);
 				next_var_value = get_var_value(&str[i + 1], s->env, next_var_len);
 				i += ft_strlen(next_var_value) - cut;
 			}
 			//printf("next var value: %s\n", next_var_value);
+			prev_str = str;
 			str = ft_join_all(str, next_var_value, i_save, cut);
+			free(prev_str);
 			//printf("str after join all: %s", str);
 			if (!str)
-				return (NULL);
+				break ;
 		}
 	}
+	if (next_var_value)
+		free(next_var_value);
 	return (str);
 }
