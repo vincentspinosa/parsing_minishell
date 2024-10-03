@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:54:45 by vispinos          #+#    #+#             */
-/*   Updated: 2024/05/17 19:59:26 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/03 02:41:00 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s1)
 	int		len;
 	char	*dup;
 
+	if (!s1)
+		return (NULL);
 	i = 0;
 	len = 0;
 	while (*(s1 + len))
