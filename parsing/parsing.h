@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/01 14:27:59 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:27:22 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_state
 {
 	char	**env;
 	int		exit_code;
-	t_list	gc;
+	t_list	*gc;
 }			t_state;
 
 /*
@@ -73,7 +73,7 @@ char	*ft_join_all(char *line, char *var_value, int i_save, int cut);
 /*
 garbage_collector.c
 */
-t_list	*ft_lstnew(void *content);
+t_list	*new_gc(void);
 void	ft_lstadd_back(t_list **alst, t_list *new);
 void	*ft_malloc(size_t size, t_list **gc);
 void	destroy_gc(t_list **gc);

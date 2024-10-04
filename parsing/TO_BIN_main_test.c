@@ -13,18 +13,19 @@ int	main(int ac, char **av, char **envp)
 	state = malloc(sizeof(t_state));
 	state->exit_code = 999;
 	state->env = &(*(envp));
+	state->gc = new_gc();
 	while (1)
 	{
-	line = readline("minishell> ");
-	if (ft_strncmp(line, "stop", 4) == 0)
-	 	break;
-	array = parseline(state, line);
-	if (array)
-		print_main_array(array);
-	else
-		printf("Array is NULL");
+		line = readline("minishell> ");
+		if (ft_strncmp(line, "stop", 4) == 0)
+			break;
+		array = parseline(state, line);
+		if (array)
+			print_main_array(array);
+		else
+			printf("Array is NULL");
 	}
-	//destroy_gc(&(state->gc));
+	destroy_gc(&(state->gc));
 	if (av || ac)
 		return (0);
 }

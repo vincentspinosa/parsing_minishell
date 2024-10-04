@@ -6,27 +6,27 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:45:34 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/01 15:55:42 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:26:36 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "../minishell.h" // decomment after code sync
 #include "parsing.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*new_gc(void)
 {
-	struct s_list	*list;
+	t_list	*list;
 
-	list = malloc(sizeof(struct s_list));
+	list = malloc(sizeof(t_list));
 	if (!list)
 		return (NULL);
-	list->content = content;
+	list->content = NULL;
 	return (list);
 }
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	struct s_list	*ptr;
+	t_list	*ptr;
 
 	ptr = *alst;
 	if (!ptr)
@@ -48,10 +48,7 @@ void	*ft_malloc(size_t size, t_list **gc)
 	space = malloc(size);
 	if (!space)
 		return (NULL);
-	if (!*gc)
-		*gc = ft_lstnew(space);
-	else
-		ft_lstadd_back(gc, space);
+	ft_lstadd_back(gc, space);
 	return (space);
 }
 
@@ -63,7 +60,10 @@ void	destroy_gc(t_list **gc)
 	{
 		temp = (*gc)->next;
 		if ((*gc)->content)
+		{
 			free((*gc)->content);
+			(*gc)->content = NULL;
+		}
 		free(*gc);
 		*gc = temp;
 	}
