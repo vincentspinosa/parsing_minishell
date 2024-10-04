@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:41:06 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/01 15:09:42 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:14:46 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static t_token	**make_sub_array(t_token **token_array, int lap, int type, t_stat
 	len = 0;
 	while (len < lap && token_array[len]->type != type)
 		len++;
-	sub_array = malloc(sizeof(t_token *) * (len + 1));//ft_malloc(sizeof(t_token *) * (len + 1), &(s->gc));
+	sub_array = ft_malloc(sizeof(t_token *) * (len + 1), &(s->gc));
 	if (!sub_array)
 		return (s->exit_code = 1, NULL);
 	i = 0;
@@ -78,7 +78,7 @@ t_token ***ft_split_array_tokens(t_token **t_a, int type, t_state *s)
 	int		ima;
 	int		ita;
 
-	array = malloc(sizeof(t_token **) * (count_sub_arrays(t_a, type) + 1));//ft_malloc(sizeof(t_token **) * (count_sub_arrays(t_a, type) + 1), &(s->gc));
+	array = ft_malloc(sizeof(t_token **) * (count_sub_arrays(t_a, type) + 1), &(s->gc));
 	if (!array)
 		return (s->exit_code = 1, NULL);
 	ima = 0;

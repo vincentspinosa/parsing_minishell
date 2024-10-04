@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 00:38:00 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/02 19:04:03 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:14:14 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_token	*make_token(int type, char *str, t_state *s)
 {
 	t_token	*token;
 
-	token = malloc(sizeof(t_token));//ft_malloc(sizeof(t_token), &(s->gc));
+	token = ft_malloc(sizeof(t_token), &(s->gc));
 	if (!token)
 		return (s->exit_code = 1, NULL);
 	token->type = type;
@@ -38,7 +38,7 @@ static t_token	**append_array(t_token *token, t_token **array, t_state *s)
 	//printf("Appending to array\n");
 	len = array_len(array);
 	//printf("Array len: %i\n", len);
-	new_array = malloc(sizeof(t_token *) * (len + 2));//ft_malloc(sizeof(t_token *) * (len + 2), &(s->gc));// 1 for null, 1 for new token
+	new_array = ft_malloc(sizeof(t_token *) * (len + 2), &(s->gc));// 1 for null, 1 for new token
 	if (!new_array)
 		return (s->exit_code = 1, NULL);
 	i = 0;
@@ -119,7 +119,7 @@ t_token	**make_str_and_append_array(char *line, int i, t_token **array, char sep
 			len++;
 	}
 	//printf("Len: %i\n", len);
-	str = malloc(sizeof(char) * (len + 1));//ft_malloc(sizeof(char) * (len + 1), &(s->gc));
+	str = ft_malloc(sizeof(char) * (len + 1), &(s->gc));
 	if (!str)
 		return (s->exit_code = 1, NULL);
 	ft_strlcpy(str, &line[i], (len + 1));

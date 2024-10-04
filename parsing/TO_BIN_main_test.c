@@ -23,7 +23,7 @@ int	main(int ac, char **av, char **envp)
 		if (array)
 			print_main_array(array);
 		else
-			printf("Array is NULL");
+			printf("Array is NULL\n");
 	}
 	destroy_gc(&(state->gc));
 	if (av || ac)

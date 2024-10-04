@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/04 16:27:22 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:42:49 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ garbage_collector.c
 */
 t_list	*new_gc(void);
 void	ft_lstadd_back(t_list **alst, t_list *new);
+void	ft_lstadd_back_create(t_list **alst, void *new_object);
 void	*ft_malloc(size_t size, t_list **gc);
 void	destroy_gc(t_list **gc);
 

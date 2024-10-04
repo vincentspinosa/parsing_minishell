@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:31:49 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/04 12:20:05 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:14:27 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ t_token	***parseline(t_state *s, char *line)
 	if (!line)
 		return (NULL);
 	//printf("Line after parseline :\n%s\n", line);
-	token_array = malloc(sizeof(t_token *));//ft_malloc(sizeof(t_token *), &(s->gc));
+	token_array = ft_malloc(sizeof(t_token *), &(s->gc));
 	if (!token_array)
 		return (s->exit_code = 1, NULL);
 	*token_array = NULL;
