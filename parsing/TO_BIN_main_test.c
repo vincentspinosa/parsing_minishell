@@ -25,7 +25,7 @@ int	main(int ac, char **av, char **envp)
 		else
 			printf("Array is NULL\n");
 	}
-	destroy_gc(&(state->gc));
+	destroy_gc(state->gc);
 	if (av || ac)
 		return (0);
 }
@@ -35,3 +35,4 @@ int	main(int ac, char **av, char **envp)
 // NO APPARENT ERRORS
 
 // < infile cat -e | << limiter "hey" | wc -l | '                            ' | grep "$LANG       hehe"
+// <infile cat -e|<<limiter"hey"|wc -l|'                            '|grep"$LANG       hehe"
