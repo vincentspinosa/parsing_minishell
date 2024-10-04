@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:31:49 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/02 18:24:07 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/04 12:20:05 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static t_token **make_token_array(char *line, t_token **token_array, t_state *s)
 			}
 			else if (line[i] == '|')
 			{
-				if ((last_token_spe == 1 && token_array[array_len(token_array) - 1]-> type != PIPE) || last_token_spe == -1)
+				if (last_token_spe == 1 || last_token_spe == -1)
 					return (s->exit_code = 2, ft_putendl_fd("minishell: syntax error near unexpected token '|'", 2), NULL);
 				token_array = make_token_and_append(PIPE, NULL, token_array, s);
 				i += 1;
