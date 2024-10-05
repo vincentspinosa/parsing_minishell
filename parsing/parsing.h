@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 18:35:55 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:45:56 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,12 @@ make_token_and_append.c
 */
 t_token	**mt_append(int type, char *str, t_token **array, t_state *s);
 t_token	**ms_append(char *line, t_token **array, t_state *s, t_msh msh);
+
+/*
+make_token_and_append_helpers.c
+*/
+int		cmd_present(t_token **array);
+int		is_cmd(t_token **array);
 
 /*
 parsing_main.c

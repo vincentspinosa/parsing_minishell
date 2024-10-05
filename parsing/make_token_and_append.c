@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 00:38:00 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 18:32:28 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:43:21 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static t_token	**append_array(t_token *token, t_token **array, t_state *s)
 
 t_token	**mt_append(int type, char *str, t_token **array, t_state *s)
 {
-	t_token *token;
+	t_token	*token;
 	t_token	**token_array;
 
 	token = make_token(type, str, s);
@@ -59,39 +59,6 @@ t_token	**mt_append(int type, char *str, t_token **array, t_state *s)
 		return (NULL);
 	token_array = append_array(token, array, s);
 	return (token_array);
-}
-
-static int	cmd_present(t_token **array)
-{
-	int	i;
-	int start;
-
-	if (array_len(array) == 0)
-		return (0);
-	start = array_len(array) - 1;
-	i = start;
-	while (i >= 0)
-	{
-		if (array[i]->type == CMD)
-			return (1);
-		if (array[i]->type == PIPE)
-			return (0);
-		i--;
-	}
-	return (0);
-}
-
-static int	is_cmd(t_token **array)
-{
-
-	if (array_len(array) == 0 || array[array_len(array) - 1]->type == PIPE
-		|| (cmd_present(array) == 0 && array_len(array) > 1 
-		&& array[array_len(array) - 1]->type == ARG 
-		&& (array[array_len(array) - 2]->is_special == 1 
-		&& array[array_len(array) - 2]->type != PIPE)))
-		return (1);
-	else
-		return (0);
 }
 
 t_token	**ms_append(char *line, t_token **array, t_state *s, t_msh msh)
