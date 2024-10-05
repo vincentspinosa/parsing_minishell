@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 00:38:00 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 00:05:52 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 01:14:35 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static t_token	**append_array(t_token *token, t_token **array, t_state *s)
 	i = 0;
 	while (i < len)
 	{
-		new_array[i] = &(*(array[i]));
+		new_array[i] = array[i];
 		i++;
 	}
-	new_array[i] = &(*(token));
+	new_array[i] = token;
 	//printf("Printing new token appended:\n");
 	//print_token(new_array[i]);
 	new_array[i + 1] = NULL;

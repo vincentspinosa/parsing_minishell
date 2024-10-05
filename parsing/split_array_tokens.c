@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:41:06 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 00:05:13 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 01:14:13 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static t_token	**make_sub_array(t_token **token_array, int lap, int type, t_stat
 	i = 0;
 	while (i < len)
 	{
-		sub_array[i] = &(*(token_array[i]));
+		sub_array[i] = token_array[i];
 		i++;
 	}
 	sub_array[i] = NULL;
