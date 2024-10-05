@@ -1,24 +1,5 @@
-tester avec main de test (TO_BIN_main_test.c)
-
--> 
-
-régler leaks -> garbage collector
-
-->
-
-protection mallocs + vérifier qu'on arrête bien tout si un seul échoue
-
-->
+leaks itoa
 
 norme
 
-->
-
-valider
-
-Attention : vérifier que toujours : 
-
-	- si erreur malloc, state->exit_code = 1 (
-		poumodifier ft_malloc() et tester que ça marche toujours)
-	- si parse error, state->exit_code = 2
-
+checker bugs / leaks / erreurs
