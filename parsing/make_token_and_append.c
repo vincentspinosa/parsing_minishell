@@ -6,11 +6,10 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 00:38:00 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 01:14:35 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 12:58:31 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../minishell.h" // decomment after code sync
 #include "parsing.h"
 
 static t_token	*make_token(int type, char *str, t_state *s)
@@ -35,10 +34,8 @@ static t_token	**append_array(t_token *token, t_token **array, t_state *s)
 	int		len;
 	int		i;
 
-	//printf("Appending to array\n");
 	len = array_len(array);
-	//printf("Array len: %i\n", len);
-	new_array = ft_malloc(sizeof(t_token *) * (len + 2), &(s->gc), s);// 1 for null, 1 for new token
+	new_array = ft_malloc(sizeof(t_token *) * (len + 2), &(s->gc), s);
 	if (!new_array)
 		return (NULL);
 	i = 0;
@@ -48,10 +45,7 @@ static t_token	**append_array(t_token *token, t_token **array, t_state *s)
 		i++;
 	}
 	new_array[i] = token;
-	//printf("Printing new token appended:\n");
-	//print_token(new_array[i]);
 	new_array[i + 1] = NULL;
-	//printf("Arren len of new array: %i\n", array_len(new_array));
 	return (new_array);
 }
 
@@ -63,10 +57,7 @@ t_token	**make_token_and_append(int type, char *str, t_token **array, t_state *s
 	token = make_token(type, str, s);
 	if (!token)
 		return (NULL);
-	//printf("New token made\n");
-	//print_token(token);
 	token_array = append_array(token, array, s);
-	//printf("Len of array in make token and append, after appending: %i\n", array_len(token_array));
 	return (token_array);
 }
 
@@ -118,7 +109,6 @@ t_token	**make_str_and_append_array(char *line, int i, t_token **array, char sep
 		while (line[i + len] && line[i + len] != sep)
 			len++;
 	}
-	//printf("Len: %i\n", len);
 	str = ft_malloc(sizeof(char) * (len + 1), &(s->gc), s);
 	if (!str)
 		return (NULL);

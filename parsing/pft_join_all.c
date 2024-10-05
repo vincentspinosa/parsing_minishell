@@ -6,11 +6,10 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 15:59:55 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 12:48:15 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 13:05:20 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../minishell.h" // decomment after code sync
 #include "parsing.h"
 
 char	*pft_join_all(char *line, char *var_value, int i_save, int cut, t_state *state)

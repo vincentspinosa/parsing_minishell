@@ -6,11 +6,10 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:41:06 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 01:14:13 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 13:06:55 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../minishell.h" // decomment after code sync
 #include "parsing.h"
 
 static int	count_sub_arrays(t_token **token_array, int type)

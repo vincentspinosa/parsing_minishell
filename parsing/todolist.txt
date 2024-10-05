@@ -1,3 +1,0 @@
-norme
-
-chercher bugs / leaks / erreurs

@@ -6,11 +6,10 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:31:49 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 00:05:27 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 13:01:49 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../minishell.h" // decomment after code sync
 #include "parsing.h"
 
 static int	noquote(int sq, int dq)
@@ -61,13 +60,12 @@ static t_token **make_token_array(char *line, t_token **token_array, t_state *s)
 	last_token_spe = -1;
 	while (line[i])
 	{
-		while (line[i] && (line[i] == ' ' || (line[i] >= 9 && line[i] <= 13)))
+		while (line[i] && ft_is_space(line[i]))
 			i++;
 		set_quotes_mode(&sq, &dq, line[i]);
-		//printf("Iterating on line, i: %i, sq: %i, dq: %i\n", i, sq, dq);
 		if (noquote(sq, dq))
 		{
-			while (line[i] && (line[i] == ' ' || (line[i] >= 9 && line[i] <= 13)))
+			while (line[i] && ft_is_space(line[i]))
 				i++;
 			if (line[i] == '<' && line[i + 1] == '<')
 			{
@@ -125,7 +123,6 @@ static t_token **make_token_array(char *line, t_token **token_array, t_state *s)
 				ft_putendl_fd("minishell: syntax error near unexpected token '", 2);
 				return (s->exit_code = 2, NULL);
 			}
-			//printf("Next quote pos: %i\n", next_quote);
 			token_array = make_str_and_append_array(line, i, token_array, SQUOTE, s);
 			i = next_quote + 1;
 			sq = 0;
@@ -144,7 +141,7 @@ static t_token **make_token_array(char *line, t_token **token_array, t_state *s)
 			dq = 0;
 			last_token_spe = 0;
 		}
-		while (line[i] && (line[i] == ' ' || (line[i] >= 9 && line[i] <= 13)))
+		while (line[i] && ft_is_space(line[i]))
 			i++;
 	}
 	return (token_array);
@@ -179,22 +176,16 @@ t_token	***parseline(t_state *s, char *line)
 	t_token	**token_array;
 	t_token	***main_array;
 
-	//printf("Starting parseline()\n");
 	line = replace_vars(line, s);
 	if (!line)
 		return (NULL);
-	//printf("Line after parseline :\n%s\n", line);
 	token_array = ft_malloc(sizeof(t_token *), &(s->gc), s);
 	if (!token_array)
 		return (NULL);
 	*token_array = NULL;
-	//printf("Null token:\n");
-	//print_token(*token_array);
-	//printf("Starting to make array token\n");
 	token_array = make_token_array(line, token_array, s);
 	if (!token_array)
 		return (NULL);
-	//print_array(token_array);
 	if (last_array_elem_valid(token_array) == 0)
 		return (s->exit_code = 2, NULL);
 	main_array = ft_split_array_tokens(token_array, PIPE, s);

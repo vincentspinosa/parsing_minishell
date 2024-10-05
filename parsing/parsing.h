@@ -6,12 +6,12 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 12:48:15 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 13:02:09 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h" // will need to remoce after code sync
-#include "stdio.h" // deleted after import of ft_printf()
+#include "libft/libft.h" // will need to remove after code sync
+#include "stdio.h"
 
 #ifndef LEXICAL
 # define LEXICAL
@@ -67,11 +67,12 @@ char	*pft_substr(char const *s, unsigned int start, size_t len, t_state *state);
 char	*pft_itoa(int n, t_state *state);
 
 /*
-array_helpers.c
+helpers.c
 */
 int		array_len(t_token **array);
 int		main_array_len(t_token ***array);
 int		ft_is_space(char c);
+void	set_quotes_mode(int *sq, int *dq, char c);
 
 /*
 pft_join_all.c
@@ -90,11 +91,6 @@ make_token_and_append.c
 */
 t_token	**make_token_and_append(int type, char *str, t_token **array, t_state *s);
 t_token	**make_str_and_append_array(char *line, int i, t_token **array, char sep, t_state *s);
-
-/*
-parse_quotes.c
-*/
-void	set_quotes_mode(int *sq, int *dq, char c);
 
 /*
 parsing_main.c

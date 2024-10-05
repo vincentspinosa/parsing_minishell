@@ -6,11 +6,10 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 20:45:15 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 12:47:07 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 13:06:31 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../minishell.h" // decomment after code sync
 #include "parsing.h"
 
 int		is_regex(char c, int pos)
@@ -86,9 +85,7 @@ char	*replace_vars(char *str, t_state *s)
 				next_var_value = get_var_value(&str[i + 1], s->env, next_var_len, s);
 				i += ft_strlen(next_var_value) - cut;
 			}
-			//printf("next var value: %s\n", next_var_value);
 			str = pft_join_all(str, next_var_value, i_save, cut, s);
-			//printf("str after join all: %s", str);
 			if (!str)
 				return (NULL);
 		}

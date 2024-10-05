@@ -1,4 +1,3 @@
-//#include "../minishell.h" // decomment after code sync
 #include "parsing.h"
 #include <readline/readline.h>
 #include <readline/history.h>

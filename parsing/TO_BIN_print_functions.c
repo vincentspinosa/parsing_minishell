@@ -1,4 +1,3 @@
-//#include "../minishell.h" // decomment after code sync
 #include "parsing.h"
 
 void	print_token(t_token *token)
