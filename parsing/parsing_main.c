@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:31:49 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 21:03:38 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 21:07:43 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ static t_token	**make_token_array(char *line, t_token **token_array, t_state *s)
 		{
 			next_quote = get_next_quote(line, (i + 1), DQUOTE);
 			if (next_quote == -1)
-				return (ft_stx_err("\"\""), s->exit_code = 2, NULL);
+				return (ft_stx_err("\""), s->exit_code = 2, NULL);
 			msh.i = i;
 			msh.sep = DQUOTE;
 			token_array = ms_append(line, token_array, s, msh);
