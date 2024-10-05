@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:41:06 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 13:06:55 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 15:53:44 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ static int	count_sub_arrays(t_token **token_array, int type)
 }
 
 /*
+msa : make sub array
 lap : len_array_param
 */
-static t_token	**make_sub_array(t_token **token_array, int lap, int type, t_state *s)
+static t_token	**msa(t_token **token_array, int lap, int type, t_state *s)
 {
 	t_token		**sub_array;
 	int			len;
@@ -71,13 +72,14 @@ t_a : token_array
 ita : index_token_array
 ima : index_main_array
 */
-t_token ***ft_split_array_tokens(t_token **t_a, int type, t_state *s)
+t_token	***ft_split_array_tokens(t_token **t_a, int type, t_state *s)
 {
 	t_token	***array;
 	int		ima;
 	int		ita;
 
-	array = ft_malloc(sizeof(t_token **) * (count_sub_arrays(t_a, type) + 1), &(s->gc), s);
+	array = ft_malloc(sizeof(t_token **)
+			* (count_sub_arrays(t_a, type) + 1), &(s->gc), s);
 	if (!array)
 		return (NULL);
 	ima = 0;
@@ -88,7 +90,7 @@ t_token ***ft_split_array_tokens(t_token **t_a, int type, t_state *s)
 			ita++;
 		if (ita < array_len(t_a) && (t_a[ita])->type != type)
 		{
-			array[ima] = make_sub_array(&t_a[ita], (array_len(t_a) - ita), type, s);
+			array[ima] = msa(&t_a[ita], (array_len(t_a) - ita), type, s);
 			if (!array[ima])
 				return (NULL);
 			ita += array_len(array[ima]);

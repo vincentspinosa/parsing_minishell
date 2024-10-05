@@ -6,13 +6,14 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:55:25 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 12:48:20 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 15:54:46 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-char	*pft_substr(char const *s, unsigned int start, size_t len, t_state *state)
+char	*pft_substr(char const *s, unsigned int start,
+					size_t len, t_state *state)
 {
 	char	*str;
 	size_t	i;
