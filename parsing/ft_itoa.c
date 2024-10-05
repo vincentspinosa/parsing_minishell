@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:53:53 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 00:06:27 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 00:30:51 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ char	*ft_itoa(int n, t_state *state)
 		sign = 1;
 		n *= -1;
 	}
-	s = malloc(sizeof(char) * (get_size(n) + sign + 1));
+	s = ft_malloc(sizeof(char) * (get_size(n) + sign + 1), &(state->gc), state);
 	if (!s)
 		return (NULL);
 	fill_string(s, n, sign, 0);

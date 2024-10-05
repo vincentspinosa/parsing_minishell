@@ -1,5 +1,3 @@
-leaks itoa
-
 norme
 
-checker bugs / leaks / erreurs
+chercher bugs / leaks / erreurs
