@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 00:03:29 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 12:48:15 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ typedef struct s_state
 /*
 libft with state
 */
-char	*ft_strdup(const char *s1, t_state *state);
-char	*ft_strjoin(char const *s1, char const *s2, t_state *state);
-char	*ft_substr(char const *s, unsigned int start, size_t len, t_state *state);
-char	*ft_itoa(int n, t_state *state);
+char	*pft_strdup(const char *s1, t_state *state);
+char	*pft_strjoin(char const *s1, char const *s2, t_state *state);
+char	*pft_substr(char const *s, unsigned int start, size_t len, t_state *state);
+char	*pft_itoa(int n, t_state *state);
 
 /*
 array_helpers.c
@@ -74,9 +74,9 @@ int		main_array_len(t_token ***array);
 int		ft_is_space(char c);
 
 /*
-ft_join_all.c
+pft_join_all.c
 */
-char	*ft_join_all(char *line, char *var_value, int i_save, int cut, t_state *state);
+char	*pft_join_all(char *line, char *var_value, int i_save, int cut, t_state *state);
 
 /*
 garbage_collector.c

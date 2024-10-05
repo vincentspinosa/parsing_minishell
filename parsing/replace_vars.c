@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 20:45:15 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/04 23:56:12 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 12:47:07 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char *get_var_value(char *str, char **env, int len, t_state *state)
 		if (ft_strncmp(str, env[i], len) == 0
 			&& env[i][len] == '=')
 		{
-			value = ft_strdup(&(env[i][len + 1]), state);
+			value = pft_strdup(&(env[i][len + 1]), state);
 		}
 		i++;
 	}
@@ -75,7 +75,7 @@ char	*replace_vars(char *str, t_state *s)
 		{
 			if (str[i + 1] == '?')
 			{
-				next_var_value = ft_itoa(s->exit_code, s);
+				next_var_value = pft_itoa(s->exit_code, s);
 				cut = 2;
 				i += ft_strlen(next_var_value) - cut;
 			}
@@ -87,7 +87,7 @@ char	*replace_vars(char *str, t_state *s)
 				i += ft_strlen(next_var_value) - cut;
 			}
 			//printf("next var value: %s\n", next_var_value);
-			str = ft_join_all(str, next_var_value, i_save, cut, s);
+			str = pft_join_all(str, next_var_value, i_save, cut, s);
 			//printf("str after join all: %s", str);
 			if (!str)
 				return (NULL);

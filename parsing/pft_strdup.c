@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_join_all.c                                      :+:      :+:    :+:   */
+/*   pft_strdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/28 15:59:55 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/04 23:44:09 by vispinos         ###   ########.fr       */
+/*   Created: 2024/05/16 12:54:45 by vispinos          #+#    #+#             */
+/*   Updated: 2024/10/05 12:47:11 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../minishell.h" // decomment after code sync
 #include "parsing.h"
 
-char	*ft_join_all(char *line, char *var_value, int i_save, int cut, t_state *state)
+char	*pft_strdup(const char *s1, t_state *state)
 {
-	char	*temp_str;
-	char	*pre_line;
-	char	*new_line;
+	int		i;
+	int		len;
+	char	*dup;
 
-	temp_str = ft_substr(line, 0, i_save, state);
-	pre_line = ft_strjoin(temp_str, var_value, state);
-	temp_str = ft_strdup(&line[i_save + cut], state);
-	new_line = ft_strjoin(pre_line, temp_str, state);
-	return (new_line);
+	if (!s1)
+		return (NULL);
+	i = 0;
+	len = 0;
+	while (*(s1 + len))
+		len++;
+	dup = ft_malloc(sizeof(char) * (len + 1), &(state->gc), state);
+	if (!dup)
+		return (NULL);
+	while (*(s1 + i))
+	{
+		*(dup + i) = *(s1 + i);
+		i++;
+	}
+	*(dup + i) = '\0';
+	return (dup);
 }

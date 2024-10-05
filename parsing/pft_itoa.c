@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   pft_itoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:53:53 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 00:30:51 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 12:46:24 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	init_int_min(char *s)
 	*(s + 11) = '\0';
 }
 
-char	*ft_itoa(int n, t_state *state)
+char	*pft_itoa(int n, t_state *state)
 {
 	int		sign;
 	char	*s;

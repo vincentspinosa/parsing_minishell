@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   pft_strjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:54:55 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 00:06:13 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 12:47:48 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-char	*ft_strjoin(char const *s1, char const *s2, t_state *state)
+char	*pft_strjoin(char const *s1, char const *s2, t_state *state)
 {
 	char	*to_return;
 	int		i;
