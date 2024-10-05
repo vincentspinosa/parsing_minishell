@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:45:34 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 00:04:31 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 00:25:42 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*ft_malloc(size_t size, t_list **gc, t_state *s)
 		return (s->exit_code = 1, free(lst_elem), NULL);
 	lst_elem->next = *gc;
 	*gc = lst_elem;
-	return (s->exit_code = 1, lst_elem->content);
+	return (lst_elem->content);
 }
 
 void	destroy_gc(t_list *gc)
