@@ -13,7 +13,7 @@ int	main(int ac, char **av, char **envp)
 		return (0);
 	state->exit_code = 999;
 	state->env = &(*(envp));
-	state->gc = new_gc();
+	state->gc = new_gc(state);
 	array = ft_malloc(sizeof(t_token **), &(state->gc), state);
 	if (!array)
 	{

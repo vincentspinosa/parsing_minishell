@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 18:45:56 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 21:03:23 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	*pft_join_all(char *line, char *var_value, int x[2], t_state *state);
 /*
 garbage_collector.c
 */
-t_list	*new_gc(void);
+t_list	*new_gc(t_state *s);
 void	*ft_malloc(size_t size, t_list **gc, t_state *s);
 void	destroy_gc(t_list *gc);
 
@@ -113,8 +113,16 @@ int		is_cmd(t_token **array);
 /*
 parsing_main.c
 */
-int		find_word_len(char *line, int i);
+void	ft_stx_err(char *str);
 t_token	***parseline(t_state *s, char *line);
+
+/*
+parsing_main_helpers.c
+*/
+int		noquote(int sq, int dq);
+int		get_next_quote(char *line, int start, int quote);
+int		find_word_len(char *line, int i);
+int		last_array_elem_valid(t_token **array);
 
 /*
 replace_vars.c
