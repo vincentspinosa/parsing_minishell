@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:31:49 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 13:01:49 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:35:24 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static t_token **make_token_array(char *line, t_token **token_array, t_state *s)
 	int last_token_spe;
 	int	next_quote;
 	int	word_len;
+	t_msh	msh;
+
 
 	i = 0;
 	sq = 0;
@@ -71,7 +73,7 @@ static t_token **make_token_array(char *line, t_token **token_array, t_state *s)
 			{
 				if (last_token_spe == 1 && token_array[array_len(token_array) - 1]-> type != PIPE)
 					return (s->exit_code = 2, ft_putendl_fd("minishell: syntax error near unexpected token '<<'", 2), NULL);
-				token_array = make_token_and_append(HEREDOC, NULL, token_array, s);
+				token_array = mt_append(HEREDOC, NULL, token_array, s);
 				i += 2;
 				last_token_spe = 1;
 			}
@@ -79,7 +81,7 @@ static t_token **make_token_array(char *line, t_token **token_array, t_state *s)
 			{
 				if (last_token_spe == 1 && token_array[array_len(token_array) - 1]-> type != PIPE)
 					return (s->exit_code = 2, ft_putendl_fd("minishell: syntax error near unexpected token '<'", 2), NULL);
-				token_array = make_token_and_append(INFILE, NULL, token_array, s);
+				token_array = mt_append(INFILE, NULL, token_array, s);
 				i += 1;
 				last_token_spe = 1;
 			}
@@ -87,7 +89,7 @@ static t_token **make_token_array(char *line, t_token **token_array, t_state *s)
 			{
 				if (last_token_spe == 1 && token_array[array_len(token_array) - 1]-> type != PIPE)
 					return (s->exit_code = 2, ft_putendl_fd("minishell: syntax error near unexpected token '>>'", 2), NULL);
-				token_array = make_token_and_append(OUTFILE_APPEND, NULL, token_array, s);
+				token_array = mt_append(OUTFILE_APPEND, NULL, token_array, s);
 				i += 2;
 				last_token_spe = 1;
 			}
@@ -95,7 +97,7 @@ static t_token **make_token_array(char *line, t_token **token_array, t_state *s)
 			{
 				if (last_token_spe == 1 && token_array[array_len(token_array) - 1]-> type != PIPE)
 					return (s->exit_code = 2, ft_putendl_fd("minishell: syntax error near unexpected token 'newline'", 2), NULL);
-				token_array = make_token_and_append(OUTFILE_TRUNCATE, NULL, token_array, s);
+				token_array = mt_append(OUTFILE_TRUNCATE, NULL, token_array, s);
 				i += 1;
 				last_token_spe = 1;
 			}
@@ -103,14 +105,16 @@ static t_token **make_token_array(char *line, t_token **token_array, t_state *s)
 			{
 				if (last_token_spe == 1 || last_token_spe == -1)
 					return (s->exit_code = 2, ft_putendl_fd("minishell: syntax error near unexpected token '|'", 2), NULL);
-				token_array = make_token_and_append(PIPE, NULL, token_array, s);
+				token_array = mt_append(PIPE, NULL, token_array, s);
 				i += 1;
 				last_token_spe = 1;
 			}
 			else
 			{
 				word_len = find_word_len(line, i);
-				token_array = make_str_and_append_array(line, i, token_array, NOQUOTE_SEP, s);
+				msh.i = i;
+				msh.sep = NOQUOTE_SEP;
+				token_array = ms_append(line, token_array, s, msh);
 				i += word_len;
 				last_token_spe = 0;
 			}
@@ -123,7 +127,9 @@ static t_token **make_token_array(char *line, t_token **token_array, t_state *s)
 				ft_putendl_fd("minishell: syntax error near unexpected token '", 2);
 				return (s->exit_code = 2, NULL);
 			}
-			token_array = make_str_and_append_array(line, i, token_array, SQUOTE, s);
+			msh.i = i;
+			msh.sep = SQUOTE;
+			token_array = ms_append(line, token_array, s, msh);
 			i = next_quote + 1;
 			sq = 0;
 			last_token_spe = 0;
@@ -136,7 +142,9 @@ static t_token **make_token_array(char *line, t_token **token_array, t_state *s)
 				ft_putendl_fd("minishell: syntax error near unexpected token \"", 2);
 				return (s->exit_code = 2, NULL);
 			}
-			token_array = make_str_and_append_array(line, i, token_array, DQUOTE, s);
+			msh.i = i;
+			msh.sep = DQUOTE;
+			token_array = ms_append(line, token_array, s, msh);
 			i = next_quote + 1;
 			dq = 0;
 			last_token_spe = 0;

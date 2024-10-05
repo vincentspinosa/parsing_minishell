@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 00:38:00 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 12:58:31 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:32:28 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static t_token	**append_array(t_token *token, t_token **array, t_state *s)
 	return (new_array);
 }
 
-t_token	**make_token_and_append(int type, char *str, t_token **array, t_state *s)
+t_token	**mt_append(int type, char *str, t_token **array, t_state *s)
 {
 	t_token *token;
 	t_token	**token_array;
@@ -94,28 +94,28 @@ static int	is_cmd(t_token **array)
 		return (0);
 }
 
-t_token	**make_str_and_append_array(char *line, int i, t_token **array, char sep, t_state *s)
+t_token	**ms_append(char *line, t_token **array, t_state *s, t_msh msh)
 {
 	char	*str;
 	int		len;
 	int		type;
 
 	len = 0;
-	if (sep == NOQUOTE_SEP)
-		len = find_word_len(line, i);
+	if (msh.sep == NOQUOTE_SEP)
+		len = find_word_len(line, msh.i);
 	else
 	{
-		i++;
-		while (line[i + len] && line[i + len] != sep)
+		msh.i++;
+		while (line[msh.i + len] && line[msh.i + len] != msh.sep)
 			len++;
 	}
 	str = ft_malloc(sizeof(char) * (len + 1), &(s->gc), s);
 	if (!str)
 		return (NULL);
-	ft_strlcpy(str, &line[i], (len + 1));
+	ft_strlcpy(str, &line[msh.i], (len + 1));
 	if (is_cmd(array) == 1)
 		type = CMD;
 	else
 		type = ARG;
-	return (make_token_and_append(type, str, array, s));
+	return (mt_append(type, str, array, s));
 }

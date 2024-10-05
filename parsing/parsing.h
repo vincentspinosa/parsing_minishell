@@ -6,26 +6,26 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 18:14:54 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:35:55 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h" // will need to remove after code sync
 #include "stdio.h"
 
-# define LEXICAL
-# define INFILE 1
-# define HEREDOC 2
-# define OUTFILE_TRUNCATE 3
-# define OUTFILE_APPEND 4
-# define PIPE 5
-# define CMD 6
-# define ARG 7
+#define LEXICAL
+#define INFILE 1
+#define HEREDOC 2
+#define OUTFILE_TRUNCATE 3
+#define OUTFILE_APPEND 4
+#define PIPE 5
+#define CMD 6
+#define ARG 7
 
-# define QUOTES
-# define SQUOTE 39
-# define DQUOTE 34
-# define NOQUOTE_SEP 0
+#define QUOTES
+#define SQUOTE 39
+#define DQUOTE 34
+#define NOQUOTE_SEP 0
 
 typedef struct s_token
 {
@@ -34,17 +34,17 @@ typedef struct s_token
 	int		is_special;
 }			t_token;
 
-typedef struct      s_list
+typedef struct s_list
 {
-    void            *content;
-    struct s_list   *next;
-}                   t_list;
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
 /*
 nvl : next var len
 nvv : next var value
 */
-typedef struct	s_var_replacer
+typedef struct s_var_replacer
 {
 	int		i;
 	int		i_save;
@@ -55,6 +55,12 @@ typedef struct	s_var_replacer
 	char	*nvv;
 	int		x_join_all[2];
 }			t_var_replacer;
+
+typedef struct ms_append_helper
+{
+	int		i;
+	char	sep;
+}			t_msh;
 
 //ONLY HERE FOR TESTING, USE REAL ONE FROM MAIN .H FILE AFTER
 typedef struct s_state
@@ -69,7 +75,7 @@ libft with state
 */
 char	*pft_strdup(const char *s1, t_state *state);
 char	*pft_strjoin(char const *s1, char const *s2, t_state *state);
-char	*pft_substr(char const *s, unsigned int start, size_t len, t_state *state);
+char	*pft_substr(char const *s, int start, int len, t_state *state);
 char	*pft_itoa(int n, t_state *state);
 
 /*
@@ -95,8 +101,8 @@ void	destroy_gc(t_list *gc);
 /*
 make_token_and_append.c
 */
-t_token	**make_token_and_append(int type, char *str, t_token **array, t_state *s);
-t_token	**make_str_and_append_array(char *line, int i, t_token **array, char sep, t_state *s);
+t_token	**mt_append(int type, char *str, t_token **array, t_state *s);
+t_token	**ms_append(char *line, t_token **array, t_state *s, t_msh msh);
 
 /*
 parsing_main.c
@@ -122,7 +128,7 @@ void	init_vr(t_var_replacer *vr);
 /*
 split_array_tokens.c
 */
-t_token ***ft_split_array_tokens(t_token **t_a, int type, t_state *s);
+t_token	***ft_split_array_tokens(t_token **t_a, int type, t_state *s);
 
 //////////////////////////////////
 //    TO BIN :
