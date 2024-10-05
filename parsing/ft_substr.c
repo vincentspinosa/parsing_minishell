@@ -6,13 +6,13 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:55:25 by vispinos          #+#    #+#             */
-/*   Updated: 2024/05/16 12:55:26 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 00:06:05 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "parsing.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len, t_state *state)
 {
 	char	*str;
 	size_t	i;
@@ -26,7 +26,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	while (*(s + start + i) && i < len)
 		i++;
-	str = malloc(sizeof(char) * (i + 1));
+	str = ft_malloc(sizeof(char) * (i + 1), &(state->gc), state);
 	if (!str)
 		return (NULL);
 	i = 0;

@@ -18,6 +18,7 @@ valider
 
 Attention : vérifier que toujours : 
 
-	- si erreur malloc, state->exit_code = 1
+	- si erreur malloc, state->exit_code = 1 (
+		poumodifier ft_malloc() et tester que ça marche toujours)
 	- si parse error, state->exit_code = 2
 

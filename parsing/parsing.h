@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/04 23:12:00 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 00:03:29 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ typedef struct s_state
 }			t_state;
 
 /*
+libft with state
+*/
+char	*ft_strdup(const char *s1, t_state *state);
+char	*ft_strjoin(char const *s1, char const *s2, t_state *state);
+char	*ft_substr(char const *s, unsigned int start, size_t len, t_state *state);
+char	*ft_itoa(int n, t_state *state);
+
+/*
 array_helpers.c
 */
 int		array_len(t_token **array);
@@ -68,13 +76,13 @@ int		ft_is_space(char c);
 /*
 ft_join_all.c
 */
-char	*ft_join_all(char *line, char *var_value, int i_save, int cut);
+char	*ft_join_all(char *line, char *var_value, int i_save, int cut, t_state *state);
 
 /*
 garbage_collector.c
 */
 t_list	*new_gc(void);
-void	*ft_malloc(size_t size, t_list **gc);
+void	*ft_malloc(size_t size, t_list **gc, t_state *s);
 void	destroy_gc(t_list *gc);
 
 /*

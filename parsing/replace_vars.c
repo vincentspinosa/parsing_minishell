@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 20:45:15 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/04 15:45:33 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:56:12 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int get_var_len(char *str, int start)
 	return (i);
 }
 
-static char *get_var_value(char *str, char **env, int len)
+static char *get_var_value(char *str, char **env, int len, t_state *state)
 {
 	char	*value;
 	int		i;
@@ -43,7 +43,7 @@ static char *get_var_value(char *str, char **env, int len)
 		if (ft_strncmp(str, env[i], len) == 0
 			&& env[i][len] == '=')
 		{
-			value = ft_strdup(&(env[i][len + 1]));
+			value = ft_strdup(&(env[i][len + 1]), state);
 		}
 		i++;
 	}
@@ -75,7 +75,7 @@ char	*replace_vars(char *str, t_state *s)
 		{
 			if (str[i + 1] == '?')
 			{
-				next_var_value = ft_itoa(s->exit_code);
+				next_var_value = ft_itoa(s->exit_code, s);
 				cut = 2;
 				i += ft_strlen(next_var_value) - cut;
 			}
@@ -83,11 +83,11 @@ char	*replace_vars(char *str, t_state *s)
 			{
 				next_var_len = get_var_len(str, i + 1);
 				cut = next_var_len + 1;
-				next_var_value = get_var_value(&str[i + 1], s->env, next_var_len);
+				next_var_value = get_var_value(&str[i + 1], s->env, next_var_len, s);
 				i += ft_strlen(next_var_value) - cut;
 			}
 			//printf("next var value: %s\n", next_var_value);
-			str = ft_join_all(str, next_var_value, i_save, cut);
+			str = ft_join_all(str, next_var_value, i_save, cut, s);
 			//printf("str after join all: %s", str);
 			if (!str)
 				return (NULL);

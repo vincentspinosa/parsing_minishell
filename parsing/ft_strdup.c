@@ -6,13 +6,13 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:54:45 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/03 02:41:00 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 00:06:20 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "parsing.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1, t_state *state)
 {
 	int		i;
 	int		len;
@@ -24,7 +24,7 @@ char	*ft_strdup(const char *s1)
 	len = 0;
 	while (*(s1 + len))
 		len++;
-	dup = malloc(sizeof(char) * (len + 1));
+	dup = ft_malloc(sizeof(char) * (len + 1), &(state->gc), state);
 	if (!dup)
 		return (NULL);
 	while (*(s1 + i))

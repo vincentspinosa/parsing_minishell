@@ -6,13 +6,13 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:54:55 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/02 18:21:21 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 00:06:13 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "parsing.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2, t_state *state)
 {
 	char	*to_return;
 	int		i;
@@ -20,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		malloc_size;
 
 	malloc_size = ft_strlen((char *) s1) + ft_strlen((char *) s2) + 1;
-	to_return = malloc(sizeof(char) * malloc_size);
+	to_return = ft_malloc(sizeof(char) * malloc_size, &(state->gc), state);
 	if (!to_return)
 		return (NULL);
 	i = 0;

@@ -6,11 +6,11 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:53:53 by vispinos          #+#    #+#             */
-/*   Updated: 2024/05/19 13:14:20 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 00:06:27 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "parsing.h"
 
 static int	get_size(int nb)
 {
@@ -78,7 +78,7 @@ static void	init_int_min(char *s)
 	*(s + 11) = '\0';
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int n, t_state *state)
 {
 	int		sign;
 	char	*s;
@@ -86,7 +86,7 @@ char	*ft_itoa(int n)
 	sign = 0;
 	if (n == -2147483648)
 	{
-		s = malloc(sizeof(char) * 12);
+		s = ft_malloc(sizeof(char) * 12, &(state->gc), state);
 		if (!s)
 			return (NULL);
 		init_int_min(s);
