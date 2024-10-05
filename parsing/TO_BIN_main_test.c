@@ -44,3 +44,4 @@ int	main(int ac, char **av, char **envp)
 
 // < infile cat -e | << limiter "hey" | wc -l | '                            ' | grep "$LANG       hehe"
 // <infile cat -e|<<limiter"hey"|wc -l|'                            '|grep"$LANG       hehe"|$?
+// echo "hehe         .         $?    $LANG""''''''"'"""""""'|<infile<infile<infile

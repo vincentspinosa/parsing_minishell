@@ -6,14 +6,13 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 16:00:32 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:14:54 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h" // will need to remove after code sync
 #include "stdio.h"
 
-#ifndef LEXICAL
 # define LEXICAL
 # define INFILE 1
 # define HEREDOC 2
@@ -22,33 +21,40 @@
 # define PIPE 5
 # define CMD 6
 # define ARG 7
-#endif
 
-#ifndef QUOTES	
 # define QUOTES
 # define SQUOTE 39
 # define DQUOTE 34
 # define NOQUOTE_SEP 0
-#endif
 
-#ifndef TOKEN
-# define TOKEN 
 typedef struct s_token
 {
 	int		type;
 	char	*content;
 	int		is_special;
 }			t_token;
-#endif
 
-#ifndef LIST
-# define LIST 
 typedef struct      s_list
 {
     void            *content;
     struct s_list   *next;
 }                   t_list;
-#endif
+
+/*
+nvl : next var len
+nvv : next var value
+*/
+typedef struct	s_var_replacer
+{
+	int		i;
+	int		i_save;
+	int		sq;
+	int		dq;
+	int		nvl;
+	int		cut;
+	char	*nvv;
+	int		x_join_all[2];
+}			t_var_replacer;
 
 //ONLY HERE FOR TESTING, USE REAL ONE FROM MAIN .H FILE AFTER
 typedef struct s_state
@@ -101,7 +107,17 @@ t_token	***parseline(t_state *s, char *line);
 /*
 replace_vars.c
 */
+int		is_regex(char c, int pos);
+int		get_var_len(char *str, int start);
+char	*get_var_value(char *str, char **env, int len, t_state *state);
 char	*replace_vars(char *str, t_state *s);
+
+/*
+replace_vars_helpers.c
+*/
+void	set_vals_dollar(t_var_replacer *vr, t_state *s);
+void	set_vals_var(t_var_replacer *vr, t_state *s, char *str);
+void	init_vr(t_var_replacer *vr);
 
 /*
 split_array_tokens.c
