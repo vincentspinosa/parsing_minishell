@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 13:02:09 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 16:00:32 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	set_quotes_mode(int *sq, int *dq, char c);
 /*
 pft_join_all.c
 */
-char	*pft_join_all(char *line, char *var_value, int i_save, int cut, t_state *state);
+char	*pft_join_all(char *line, char *var_value, int x[2], t_state *state);
 
 /*
 garbage_collector.c

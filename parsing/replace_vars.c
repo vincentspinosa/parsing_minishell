@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 20:45:15 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 13:06:31 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/05 16:03:28 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char	*replace_vars(char *str, t_state *s)
 	int		next_var_len;
 	int		cut;
 	char 	*next_var_value;
+	int		x_join_all[2];
 
 	sq = 0;
 	dq = 0;
@@ -85,7 +86,9 @@ char	*replace_vars(char *str, t_state *s)
 				next_var_value = get_var_value(&str[i + 1], s->env, next_var_len, s);
 				i += ft_strlen(next_var_value) - cut;
 			}
-			str = pft_join_all(str, next_var_value, i_save, cut, s);
+			x_join_all[0] = i_save;
+			x_join_all[1] = cut;
+			str = pft_join_all(str, next_var_value, x_join_all, s);
 			if (!str)
 				return (NULL);
 		}
