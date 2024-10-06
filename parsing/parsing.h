@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 21:03:23 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/06 04:25:10 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,17 @@ typedef struct ms_append_helper
 	char	sep;
 }			t_msh;
 
+typedef struct s_token_array_maker
+{
+	int		i;
+	int		sq;
+	int		dq;
+	int		last_token_spe;
+	int		next_quote;
+	int		word_len;
+	t_msh	msh;
+}			t_am;
+
 //ONLY HERE FOR TESTING, USE REAL ONE FROM MAIN .H FILE AFTER
 typedef struct s_state
 {
@@ -114,6 +125,7 @@ int		is_cmd(t_token **array);
 parsing_main.c
 */
 void	ft_stx_err(char *str);
+t_token	**make_token_array(char *line, t_token **token_array, t_state *s);
 t_token	***parseline(t_state *s, char *line);
 
 /*
