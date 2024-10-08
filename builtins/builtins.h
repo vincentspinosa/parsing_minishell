@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:57:29 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 15:48:24 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:29:01 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,18 @@
 int	ft_cd(char **array, t_state *s);
 int	ft_echo(char **array);
 int	ft_env(char **env);
+int	ft_exit(char **array, t_state *s);
 int	ft_pwd(t_state *s);
+
+/* ft_export.c */
+int	ft_export_key_value(char *str1, char *str2, t_state *s);
+int	ft_export_zero(t_state *s);
+char	**append_char_star(char **array, char *str, t_state *s);
+int	ft_export(char **vars, t_state *s);
+
+/* ft_export_helpers.c */
+char	**char_star_array_sort(char **array, t_state *s);
+char	**make_char_s_arr_from_str(char *str, t_state *s);
 
 /* ft_unset.c */
 int	char_star_array_len(char **array);

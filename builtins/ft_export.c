@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:41:57 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 15:11:15 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:09:05 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_export_zero(t_state *s)
 	char	**temp_env;
 	int		i;
 
-	temp_env = char_star_sort(s->env, s);
+	temp_env = char_star_array_sort(s->env, s);
 	if (!temp_env || !*temp_env)
 		return (1);
 	i = 0;

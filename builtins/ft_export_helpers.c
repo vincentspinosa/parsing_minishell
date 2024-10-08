@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:52:59 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 15:11:12 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:09:05 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	find_nth_elem(char **array, int pos)
 	return (0);
 }
 
-char	**char_star_sort(char **array, t_state *s)
+char	**char_star_array_sort(char **array, t_state *s)
 {
 	char	**new_array;
 	int		i;

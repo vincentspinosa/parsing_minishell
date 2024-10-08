@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:35:51 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 15:11:24 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:30:30 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_unset(char **vars, t_state *s)
 	if (!vars || !s->env)
 		return (0);
 	len = char_star_array_len(s->env);
-	new_env = ft_malloc(sizeof(char *) * (len + 1));
+	new_env = ft_malloc(sizeof(char *) * (len + 1), &(s->gc), s);
 	if (!new_env)
 		return (1);
 	i = 0;
