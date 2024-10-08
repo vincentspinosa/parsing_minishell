@@ -6,28 +6,11 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:41:57 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 21:37:48 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:49:55 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
-
-int	ft_export_key_value(char *str1, char *str2, t_state *s)
-{
-	char *str;
-	char **array;
-
-	str = pft_strjoin(str1, "=", s);
-	if (!str)
-		return (1);
-	str = pft_strjoin(str, str2, s);
-	if (!str)
-		return (1);
-	array = make_char_s_arr_from_str(str, s);
-	if (!array)
-		return (1);
-	return (ft_export(array, s));
-}
 
 int	ft_export_zero(t_state *s)
 {
@@ -99,6 +82,7 @@ int	ft_export(char **vars, t_state *s)
 			ft_putstr_fd(vars[i], 2);
 			ft_putendl_fd("': not a valid identifier", 2);
 			s->exit_code = 1;
+			i++;
 			continue;
 		}
 		ft_unset(make_char_s_arr_from_str(vars[i], s), s);
@@ -109,16 +93,27 @@ int	ft_export(char **vars, t_state *s)
 	}
 	return (0);
 }
-
+/* 
 int main(int ac, char **av, char **envp)
 {
 	t_state *s;
+	char	**export_param;
 
 	s = malloc(sizeof(t_state));
 	s->exit_code = 999;
 	s->gc = new_gc(s);
 	s->env = envp;
-	ft_export(NULL, s);
+	//ft_export(NULL, s);
+	export_param = malloc(sizeof(char *));
+	export_param = make_char_s_arr_from_str("EXPORT_MINISHELL1=12", s);
+	export_param = append_char_star(export_param, "&WRONG_EXPORT", s);
+	export_param = append_char_star(export_param, "1WRONG_EXPORT", s);
+	export_param = append_char_star(export_param,"EXPORT_MINISHELL2=120", s);
+	export_param = append_char_star(export_param, "a", s);
+	export_param = append_char_star(export_param, "WRONG-EXPORT", s);
+	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL4=120", s);
+	ft_export(export_param, s);
+	ft_env(s->env);
 	if (ac || av)
 		return (0);
-}
+} */

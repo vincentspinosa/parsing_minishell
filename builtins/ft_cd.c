@@ -6,11 +6,28 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 19:38:02 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 21:35:08 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:50:04 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
+
+int	ft_export_key_value(char *str1, char *str2, t_state *s)
+{
+	char *str;
+	char **array;
+
+	str = pft_strjoin(str1, "=", s);
+	if (!str)
+		return (1);
+	str = pft_strjoin(str, str2, s);
+	if (!str)
+		return (1);
+	array = make_char_s_arr_from_str(str, s);
+	if (!array)
+		return (1);
+	return (ft_export(array, s));
+}
 
 int	ft_cd(char **array, t_state *s)
 {
