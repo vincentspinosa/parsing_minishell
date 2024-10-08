@@ -6,9 +6,11 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 19:38:02 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 16:27:03 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:11:01 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "builtins.h"
 
 int	ft_cd(char **array, t_state *s)
 {

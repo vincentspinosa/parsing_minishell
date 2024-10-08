@@ -6,9 +6,11 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:03:49 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 16:27:16 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:11:09 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "builtins.h"
 
 static int	len_one(t_state *s)
 {

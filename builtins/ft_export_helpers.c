@@ -6,9 +6,11 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:52:59 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 16:16:29 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:11:12 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "builtins.h"
 
 static int	find_nth_elem(char **array, int pos)
 {

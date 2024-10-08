@@ -6,9 +6,11 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 08:39:55 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/07 17:56:58 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:11:04 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "builtins.h"
 
 int	ft_echo(char **array)
 {

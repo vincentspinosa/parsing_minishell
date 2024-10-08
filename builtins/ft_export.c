@@ -6,9 +6,11 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:41:57 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 16:52:12 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:11:15 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "builtins.h"
 
 int	ft_export_key_value(char *str1, char *str2, t_state *s)
 {
