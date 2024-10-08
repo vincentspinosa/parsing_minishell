@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:41:57 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 17:09:05 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 20:57:12 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ int	ft_export_key_value(char *str1, char *str2, t_state *s)
 	char *str;
 	char **array;
 
-	str = pft_strjoin(str1, "=");
+	str = pft_strjoin(str1, "=", s);
 	if (!str)
 		return (1);
-	str = pft_strjoin(str, str2);
+	str = pft_strjoin(str, str2, s);
 	if (!str)
 		return (1);
 	array = make_char_s_arr_from_str(str, s);
 	if (!array)
 		return (1);
-	return (ft_export(array));
+	return (ft_export(array, s));
 }
 
 int	ft_export_zero(t_state *s)
@@ -87,9 +87,9 @@ int	ft_export(char **vars, t_state *s)
 	int	len;
 	int	i;
 
-	len = char_star_array_len(array);
+	len = char_star_array_len(vars);
 	if (len == 0)
-		return (export_zero(t_state *s));
+		return (ft_export_zero(s));
 	i = 0;
 	while (i < len)
 	{
@@ -101,10 +101,10 @@ int	ft_export(char **vars, t_state *s)
 			s->exit_code = 1;
 			continue;
 		}
-		ft_unset(make_char_s_arr_from_str(vars[i]), s);
-		s->env = append_char_star(s->env, vars[i]);
+		ft_unset(make_char_s_arr_from_str(vars[i], s), s);
+		s->env = append_char_star(s->env, vars[i], s);
 		if (!s->env)
-			return (NULL);
+			return (1);
 		i++;
 	}
 	return (0);

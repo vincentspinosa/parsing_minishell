@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:35:51 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 17:30:30 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 21:04:42 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	is_present(char *env_elem, char **vars)
 	while (vars[i])
 	{
 		if (!ft_strncmp(env_elem, vars[i], ft_strlen(vars[i]))
-			&& (!env_elem[ft_strlen(vars[i]) + 1]
-				|| env_elem[ft_strlen(vars[i]) + 1] == '='))
+			&& (!env_elem[ft_strlen(vars[i])]
+				|| env_elem[ft_strlen(vars[i])] == '='))
 			return (1);
 		i++;
 	}
@@ -70,3 +70,23 @@ int	ft_unset(char **vars, t_state *s)
 	s->env = new_env;
 	return (0);
 }
+
+/* int	main(int ac, char **av, char **envp)
+{
+	t_state	*s;
+	char	**unset_param;
+
+	s = malloc(sizeof(t_state));
+	s->exit_code = 999;
+	s->env = envp;
+	ft_env(s->env);
+	unset_param = malloc(sizeof(char *));
+	unset_param = make_char_s_arr_from_str("_", s);
+	unset_param = append_char_star(unset_param, "GOPATH", s);
+	unset_param = append_char_star(unset_param, "OLDPWD", s);
+	unset_param = append_char_star(unset_param, "TERM_PROGRAM", s);
+	ft_unset(unset_param, s);
+	ft_env(s->env);
+	if (ac || av)
+		return (0);
+} */
