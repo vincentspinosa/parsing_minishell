@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 19:38:02 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 21:25:45 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 21:35:08 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_cd(char **array, t_state *s)
 	return (1);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	return (0);
-}
+} */
