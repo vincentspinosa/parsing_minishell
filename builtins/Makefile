@@ -16,5 +16,8 @@ munset: clean
 mexport: clean
 	cc -Wall -Wextra -Werror *.c ../parsing/*.c ../parsing/libft/*.c
 
+mcd: clean
+	cc -Wall -Wextra -Werror *.c ../parsing/*.c ../parsing/libft/*.c
+
 clean:
 	rm -f a.out

@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:41:57 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 21:09:45 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 21:26:20 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,8 @@ int	ft_export(char **vars, t_state *s)
 	return (0);
 }
 
-int main(void)
+/* int main(void)
 {
-	
+	return (0);
 }
+ */
