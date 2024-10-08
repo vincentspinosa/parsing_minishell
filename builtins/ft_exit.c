@@ -6,14 +6,15 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:03:49 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 15:11:09 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/08 18:34:18 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
-static int	len_one(t_state *s)
+static int	len_one(void)
 {
+	ft_putendl_fd("exit", 1);
 	// exec ;
 	return (0);
 }
@@ -56,13 +57,29 @@ int	ft_exit(char **array, t_state *s)
 
 	len = char_star_array_len(array);
 	if (len == 1)
-		return (len_one(s));
+		return (len_one());
 	else if (!isnum(array[1]))
 		return (not_num(s));
 	else if (len > 2)
 		return (too_many_args(s));
 	s->exit_code = ft_atoi(array[1]) % 256;
+	if (s->exit_code < 0)
+		s->exit_code += 256;
 	ft_putendl_fd("exit", 1);
 	// exec ;
 	return (0);
 }
+
+/* int	main(int ac, char **av)
+{
+	t_state	*s;
+
+	s = malloc(sizeof(t_state));
+	if (!s)
+		return (1);
+	s->exit_code = 999;
+	ft_exit(av, s);
+	printf("Exit return code : %i\n", s->exit_code);
+	if (ac)
+		return (0);
+} */
