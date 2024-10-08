@@ -25,3 +25,11 @@ int	ft_pwd(t_state *s)
 	s->exit_code = 1;
 	return (1);
 }
+
+/* int	main(void)
+{
+	t_state *s;
+	s = malloc(sizeof(t_state));
+	s->exit_code = 999;
+	ft_pwd(s);
+} */
