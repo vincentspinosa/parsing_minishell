@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:52:59 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/09 14:04:18 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:06:09 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	**char_star_array_sort(char **array, t_state *s)
 
 	if (!array)
 		return (NULL);
-	len = char_star_array_len(array);
+	len = sal(array);
 	new_array = ft_malloc(sizeof(char *) * (len + 1), &(s->gc), s);
 	if (!new_array)
 		return (NULL);

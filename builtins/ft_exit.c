@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:03:49 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/09 12:57:36 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:16:18 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_exit(char **array, t_state *s)
 {
 	int	len;
 
-	len = char_star_array_len(array);
+	len = sal(array);
 	if (len == 1)
 		return (len_one());
 	else if (!isnum(array[1]))

@@ -6,13 +6,13 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:35:51 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/09 13:36:51 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:14:56 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
-int	char_star_array_len(char **array)
+int	sal(char **array)
 {
 	int	i;
 
@@ -63,15 +63,13 @@ static void	check_regex(char **vars, t_state *s)
 int	ft_unset(char **vars, t_state *s)
 {
 	char	**new_env;
-	int		len;
 	int		i;
 	int		j;
 
 	if (!vars || !s->env)
 		return (0);
 	check_regex(vars, s);
-	len = char_star_array_len(s->env);
-	new_env = ft_malloc(sizeof(char *) * (len + 1), &(s->gc), s);
+	new_env = ft_malloc(sizeof(char *) * (sal(s->env) + 1), &(s->gc), s);
 	if (!new_env)
 		return (1);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:57:29 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/09 13:58:54 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:06:34 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ char	**char_star_array_sort(char **array, t_state *s);
 char	**make_char_s_arr_from_str(char *str, t_state *s);
 
 /* ft_unset.c */
-int		char_star_array_len(char **array);
+/* sal -> string array len */
+int		sal(char **array);
 int		is_present(char *env_elem, char **vars);
 int		ft_unset(char **vars, t_state *s);
 

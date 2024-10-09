@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:41:57 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/09 13:58:21 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:23:30 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	**append_char_star(char **array, char *str, t_state *s)
 	int		i;
 	char	**new_array;
 
-	len = char_star_array_len(array);
+	len = sal(array);
 	new_array = ft_malloc(sizeof(char *) * (len + 2), &(s->gc), s);
 	if (!new_array)
 		return (NULL);
@@ -76,10 +76,10 @@ int	ft_export(char **vars, t_state *s)
 	int		i;
 	char	*var_name;
 
-	if (char_star_array_len(vars) == 0)
+	if (sal(vars) == 0)
 		return (ft_export_zero(s));
 	i = 0;
-	while (i < char_star_array_len(vars))
+	while (i < sal(vars))
 	{
 		if (unvalid_regex(vars[i]))
 		{
