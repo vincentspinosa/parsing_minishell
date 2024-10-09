@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 19:38:02 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/09 14:12:56 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 12:55:41 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_cd(char **array, t_state *s)
 	return (0);
 }
 
-int	main(int ac, char **av, char **envp)
+/* int	main(int ac, char **av, char **envp)
 {
 	t_state	*s;
 
@@ -65,7 +65,7 @@ int	main(int ac, char **av, char **envp)
 	s->gc = new_gc(s);
 	s->env = envp;
 	ft_cd(av, s);
-	ft_env(s->env);
+	ft_export_zero(s);
 	if (ac)
 		return (0);
-}
+} */

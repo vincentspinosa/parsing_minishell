@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:41:57 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/09 13:50:38 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 13:55:36 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,19 @@ int	ft_export_zero(t_state *s)
 	return (0);
 }
 
-static int	unvalid_regex(char *str)
+int	unvalid_regex(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] && (str[i] != '=' || i == 0))
+	while (ft_is_space(str[i]))
+		i++;
+	str = &str[i];
+	i = 0;
+	while (str[i])
 	{
+		if (str[i] == '=' && i != 0)
+			return (0);
 		if (!is_regex(str[i], i))
 			return (1);
 		i++;
@@ -93,8 +99,9 @@ int	ft_export(char **vars, t_state *s)
 	}
 	return (0);
 }
-/* 
-int main(int ac, char **av, char **envp)
+
+
+/* int main(int ac, char **av, char **envp)
 {
 	t_state *s;
 	char	**export_param;
@@ -103,7 +110,12 @@ int main(int ac, char **av, char **envp)
 	s->exit_code = 999;
 	s->gc = new_gc(s);
 	s->env = envp;
-	//ft_export(NULL, s);
+	// test for case NULL
+	// export_param = NULL;
+	// ft_export(export_param, s);
+	// if (ac || av)
+	// 	return (0);
+	// end test NULL
 	export_param = malloc(sizeof(char *));
 	export_param = make_char_s_arr_from_str("EXPORT_MINISHELL1=12", s);
 	export_param = append_char_star(export_param, "&WRONG_EXPORT", s);
@@ -111,12 +123,30 @@ int main(int ac, char **av, char **envp)
 	export_param = append_char_star(export_param,"EXPORT_MINISHELL2=120", s);
 	export_param = append_char_star(export_param, "a", s);
 	export_param = append_char_star(export_param, "WRONG-EXPORT", s);
-	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL4=120", s);
 	export_param = append_char_star(export_param,
-		"_EXPORT_MINI5SHELL4='heeeeeeeeee'", s);
+					"_EXPORT_MINI5SHELL4=120", s);
+	export_param = append_char_star(export_param,
+					"_EXPORT_MINI5SHELL4='heeeeeeeeee'", s);
 	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL4=2", s);
-	export_param = append_char_star(export_param,"
-		_EXPORT_MINI5SHELL4=aaaaaaa aaaaaaaa aaaa", s);
+	export_param = append_char_star(export_param,
+					"_EXPORT_MINI5SHELL4=aaaaaaa aaaaaaaa aaaa", s);
+	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL5", s);
+	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL6=", s);
+	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL6=''", s);
+	export_param = append_char_star(export_param,
+					"_EXPORT_MINI5SHELL6=\"\"", s);
+	export_param = append_char_star(export_param, "WRO-NG_EXPORT", s);
+	export_param = append_char_star(export_param, "WRONG_E'XPORT", s);
+	export_param = append_char_star(export_param, "$WRONG_EXPORT", s);
+	export_param = append_char_star(export_param, "", s);
+	export_param = append_char_star(export_param, "\"\"", s);
+	export_param = append_char_star(export_param, "''", s);
+	export_param = append_char_star(export_param, "\"\"=aaaaaaaaa", s);
+	export_param = append_char_star(export_param, "''", s);
+	export_param = append_char_star(export_param,
+					"''=aa bb gg 'eezzeezzee' aaaaa", s);
+	export_param = append_char_star(export_param,
+				"_EXPORT_MINI5SHELL7='abcdefg mmmmm lllll mmmmm lllll'", s);
 	ft_export(export_param, s);
 	ft_env(s->env);
 	if (ac || av)
