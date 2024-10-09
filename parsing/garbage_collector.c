@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:45:34 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/05 20:56:22 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 21:10:41 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,24 @@ void	destroy_gc(t_list *gc)
 	if (!gc)
 		return ;
 	destroy_gc(gc->next);
-	free(gc->content);
+	if (gc->content)
+		free(gc->content);
 	free(gc);
+}
+
+void	shallow_clear_gc(t_list *gc, char **env)
+{
+	if (gc)
+		return ;
+	shallow_clear_gc(gc->next, env);
+	if (gc->content == env)
+		return ;
+	while (*(env))
+	{
+		if (*(env) == gc->content)
+			return ;
+		(env)++;
+	}
+	free(gc->content);
+	gc->content = NULL;
 }

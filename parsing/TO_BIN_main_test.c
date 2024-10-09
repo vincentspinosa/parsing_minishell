@@ -2,7 +2,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-/* int	main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **envp)
 {
 	t_token	***array;
 	t_state	*state;
@@ -32,12 +32,13 @@
 		else
 			printf("Array is NULL\n");
 	}
+	shallow_clear_gc(state->gc, state->env);
 	destroy_gc(state->gc);
 	free(state);
 	if (av || ac)
 		return (0);
 }
- */
+
 // pour compiler : cc -W... *.c libft/*.c -lreadline
 
 // NO APPARENT ERRORS

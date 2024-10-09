@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/06 04:25:10 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 21:07:45 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ garbage_collector.c
 t_list	*new_gc(t_state *s);
 void	*ft_malloc(size_t size, t_list **gc, t_state *s);
 void	destroy_gc(t_list *gc);
+void	shallow_clear_gc(t_list *gc, char **env);
 
 /*
 make_token_and_append.c
