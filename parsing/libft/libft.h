@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:55:42 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/04 23:53:39 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 00:57:34 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "stdlib.h"
 # include "string.h"
 
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd); // used
+void	ft_putstr_fd(char *s, int fd); // used
 void	ft_putendl_fd(char *s, int fd); // used
 void	ft_putnbr_fd(int n, int fd);
 
@@ -32,7 +32,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize); // used
 
-int		ft_atoi(const char *str);
+int		ft_atoi(const char *str); // used
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);

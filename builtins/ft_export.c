@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:41:57 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 23:49:55 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 00:55:57 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ char	**append_char_star(char **array, char *str, t_state *s)
 
 int	ft_export(char **vars, t_state *s)
 {
-	int	len;
-	int	i;
+	int		len;
+	int		i;
+	char	*var_name;
 
 	len = char_star_array_len(vars);
 	if (len == 0)
@@ -85,7 +86,8 @@ int	ft_export(char **vars, t_state *s)
 			i++;
 			continue;
 		}
-		ft_unset(make_char_s_arr_from_str(vars[i], s), s);
+		var_name = pft_substr(vars[i], 0, get_var_len(vars[i], 0), s);
+		ft_unset(make_char_s_arr_from_str(var_name, s), s);
 		s->env = append_char_star(s->env, vars[i], s);
 		if (!s->env)
 			return (1);
@@ -112,6 +114,9 @@ int main(int ac, char **av, char **envp)
 	export_param = append_char_star(export_param, "a", s);
 	export_param = append_char_star(export_param, "WRONG-EXPORT", s);
 	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL4=120", s);
+	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL4='heeeeeeeeee'", s);
+	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL4=2", s);
+	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL4=aaaaaaa aaaaaaaa aaaa", s);
 	ft_export(export_param, s);
 	ft_env(s->env);
 	if (ac || av)

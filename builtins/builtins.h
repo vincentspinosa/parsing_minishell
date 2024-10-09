@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:57:29 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 23:50:59 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 00:24:12 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	    ft_pwd(t_state *s);
 
 /* ft_cd.c */
 int	    ft_cd(char **array, t_state *s);
-int	    ft_export_key_value(char *str1, char *str2, t_state *s);
+char	*ft_export_key_value(char *str1, char *str2, t_state *s);
 
 /* ft_export.c */
 int 	ft_export_zero(t_state *s);
