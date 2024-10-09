@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:41:57 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/09 00:55:57 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 13:50:38 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	ft_export_zero(t_state *s)
 	return (0);
 }
 
-static int unvalid_regex(char *str)
+static int	unvalid_regex(char *str)
 {
 	int	i;
 
 	i = 0;
-	while(str[i] && (str[i] != '=' || i == 0))
+	while (str[i] && (str[i] != '=' || i == 0))
 	{
 		if (!is_regex(str[i], i))
 			return (1);
@@ -67,15 +67,13 @@ char	**append_char_star(char **array, char *str, t_state *s)
 
 int	ft_export(char **vars, t_state *s)
 {
-	int		len;
 	int		i;
 	char	*var_name;
 
-	len = char_star_array_len(vars);
-	if (len == 0)
+	if (char_star_array_len(vars) == 0)
 		return (ft_export_zero(s));
 	i = 0;
-	while (i < len)
+	while (i < char_star_array_len(vars))
 	{
 		if (unvalid_regex(vars[i]))
 		{
@@ -84,7 +82,7 @@ int	ft_export(char **vars, t_state *s)
 			ft_putendl_fd("': not a valid identifier", 2);
 			s->exit_code = 1;
 			i++;
-			continue;
+			continue ;
 		}
 		var_name = pft_substr(vars[i], 0, get_var_len(vars[i], 0), s);
 		ft_unset(make_char_s_arr_from_str(var_name, s), s);
@@ -114,9 +112,11 @@ int main(int ac, char **av, char **envp)
 	export_param = append_char_star(export_param, "a", s);
 	export_param = append_char_star(export_param, "WRONG-EXPORT", s);
 	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL4=120", s);
-	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL4='heeeeeeeeee'", s);
+	export_param = append_char_star(export_param,
+		"_EXPORT_MINI5SHELL4='heeeeeeeeee'", s);
 	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL4=2", s);
-	export_param = append_char_star(export_param,"_EXPORT_MINI5SHELL4=aaaaaaa aaaaaaaa aaaa", s);
+	export_param = append_char_star(export_param,"
+		_EXPORT_MINI5SHELL4=aaaaaaa aaaaaaaa aaaa", s);
 	ft_export(export_param, s);
 	ft_env(s->env);
 	if (ac || av)

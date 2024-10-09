@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 19:38:02 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/09 00:54:46 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:12:56 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_join_key_value(char *str1, char *str2, t_state *s)
 {
-	char *str;
-	char **array;
+	char	*str;
+	char	**array;
 
 	str = pft_strjoin(str1, "=", s);
 	if (!str)
@@ -31,16 +31,11 @@ char	*ft_join_key_value(char *str1, char *str2, t_state *s)
 
 int	ft_cd(char **array, t_state *s)
 {
-	char	*dest;
 	char	absolute_dest[PATH_MAX];
 	char	**export_param;
 	char	*str;
 
-	if (array && array[1])
-		dest = array[1];
-	else
-		dest = "";
-	if (chdir(dest) != 0)
+	if (chdir(array[1]) != 0)
 	{
 		// voir si Théo veut + pousser l'exec / la gestion des erreurs
 		ft_putstr_fd("error: cd: cannot change directory to ", 2);
@@ -53,16 +48,17 @@ int	ft_cd(char **array, t_state *s)
 	export_param = make_char_s_arr_from_str(str, s);
 	if (!export_param)
 		return (1);
-	export_param = append_char_star(export_param, ft_join_key_value("PWD", absolute_dest, s), s);
+	str = ft_join_key_value("PWD", absolute_dest, s);
+	export_param = append_char_star(export_param, str, s);
 	if (!export_param)
 		return (1);
 	ft_export(export_param, s);
 	return (0);
 }
 
-/* int	main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **envp)
 {
-	t_state *s;
+	t_state	*s;
 
 	s = malloc(sizeof(t_state));
 	s->exit_code = 999;
@@ -72,4 +68,4 @@ int	ft_cd(char **array, t_state *s)
 	ft_env(s->env);
 	if (ac)
 		return (0);
-} */
+}

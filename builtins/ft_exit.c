@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:03:49 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/08 18:34:18 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:14:03 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	too_many_args(t_state *s)
 	ft_putendl_fd("exit\nminishell: exit: too many arguments", 2);
 	s->exit_code = 1;
 	// exec ;
-	return (1);	
+	return (1);
 }
 
 static int	isnum(char *str)
