@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:18:05 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/10 11:32:35 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/10 11:49:39 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	detect_builtin(char *cmd)
 	return (-1);
 }
 
-int	launch_if_bultin(char **array, t_state *s)
+int	launch_if_builtin(char **array, t_state *s)
 {
 	int	bltn;
 

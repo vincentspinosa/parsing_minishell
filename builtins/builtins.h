@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:57:29 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/10 11:35:45 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/10 11:49:44 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_exit(char **array, t_state *s);
 int		ft_pwd(t_state *s);
 
 /* detect_and_launch.c */
-int		launch_if_bultin(char **array, t_state *s);
+int		launch_if_builtin(char **array, t_state *s);
 
 /* ft_cd.c */
 int		ft_cd(char **array, t_state *s);
