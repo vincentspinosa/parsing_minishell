@@ -33,6 +33,9 @@
 			printf("Array is NULL\n");
 	}
 	shallow_clear_gc(state->gc, state->env);
+	shallow_clear_gc(state->gc, state->env);
+	shallow_clear_gc(state->gc, state->env);
+	shallow_clear_gc(state->gc, state->env);
 	int	i = 0;
 	while (state->env[i])
 	{
