@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:57:29 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/09 14:06:34 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/10 11:35:45 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,21 @@
 # include <limits.h>
 # include "../parsing/parsing.h"
 
+# define CD 0
+# define ECHO 1
+# define ENV 2
+# define EXIT 3
+# define EXPORT 4
+# define PWD 5
+# define UNSET 6
+
 int		ft_echo(char **array);
 int		ft_env(char **env);
 int		ft_exit(char **array, t_state *s);
 int		ft_pwd(t_state *s);
+
+/* detect_and_launch.c */
+int		launch_if_bultin(char **array, t_state *s);
 
 /* ft_cd.c */
 int		ft_cd(char **array, t_state *s);
