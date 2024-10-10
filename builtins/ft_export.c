@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:41:57 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/09 14:23:30 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/10 11:41:00 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,12 @@ char	**append_char_star(char **array, char *str, t_state *s)
 int	ft_export(char **vars, t_state *s)
 {
 	int		i;
+	int		code;
 	char	*var_name;
 
 	if (sal(vars) == 0)
 		return (ft_export_zero(s));
+	code = 0;
 	i = 0;
 	while (i < sal(vars))
 	{
@@ -86,7 +88,7 @@ int	ft_export(char **vars, t_state *s)
 			ft_putstr_fd("bash: export: '", 2);
 			ft_putstr_fd(vars[i], 2);
 			ft_putendl_fd("': not a valid identifier", 2);
-			s->exit_code = 1;
+			code = 1;
 			i++;
 			continue ;
 		}
@@ -97,7 +99,7 @@ int	ft_export(char **vars, t_state *s)
 			return (1);
 		i++;
 	}
-	return (0);
+	return (code);
 }
 
 /* int main(int ac, char **av, char **envp)

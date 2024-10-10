@@ -22,7 +22,6 @@ int	ft_pwd(t_state *s)
 		return (0);
 	}
 	ft_putendl_fd("pwd: error retrieving current directory", 2);
-	s->exit_code = 1;
 	return (1);
 }
 
