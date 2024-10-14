@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:03:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/09 21:07:45 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/14 01:46:39 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_token_array_maker
 	int		last_token_spe;
 	int		next_quote;
 	int		word_len;
+	int		error;
 	t_msh	msh;
 }			t_am;
 
@@ -126,8 +127,18 @@ int		is_cmd(t_token **array);
 parsing_main.c
 */
 void	ft_stx_err(char *str);
-t_token	**make_token_array(char *line, t_token **token_array, t_state *s);
+t_token	**make_token_array(char *line, t_token **t_a, t_state *s);
 t_token	***parseline(t_state *s, char *line);
+
+/* parsing_main2.c && parsing_main3.c */
+int		h(t_am *am, char **line, t_token ***token_array, t_state *s);
+int		i(t_am *am, char **line, t_token ***token_array, t_state *s);
+int		oa(t_am *am, char **line, t_token ***token_array, t_state *s);
+int		ot(t_am *am, char **line, t_token ***token_array, t_state *s);
+int		p(t_am *am, char **line, t_token ***token_array, t_state *s);
+void	nqstr(t_am *am, char **line, t_token ***token_array, t_state *s);
+int		sqstr(t_am *am, char **line, t_token ***token_array, t_state *s);
+void	dqstr(t_am *am, char **line, t_token ***token_array, t_state *s);
 
 /*
 parsing_main_helpers.c
