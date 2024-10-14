@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:57:29 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/10 17:31:08 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/14 04:48:18 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	*ft_export_key_value(char *str1, char *str2, t_state *s);
 
 /* ft_export.c */
 int		unvalid_regex(char *str);
+void	put_export_unvalid_regex(char *str, int *code, int *i);
 int		ft_export_zero(t_state *s);
 char	**append_char_star(char **array, char *str, t_state *s);
 int		ft_export(char **vars, t_state *s);

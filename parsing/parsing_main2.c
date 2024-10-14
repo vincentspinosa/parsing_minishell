@@ -6,13 +6,13 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 01:00:59 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/14 01:56:32 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/14 04:38:52 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int h(t_am *am, char **line, t_token ***token_array, t_state *s)
+int	h(t_am *am, char **line, t_token ***token_array, t_state *s)
 {
 	if (line[0][am->i] == '<' && line[0][am->i + 1] == '<')
 	{
@@ -25,6 +25,11 @@ int h(t_am *am, char **line, t_token ***token_array, t_state *s)
 			return (1);
 		}
 		token_array[0] = mt_append(HEREDOC, NULL, token_array[0], s);
+		if (!(token_array[0]))
+		{
+			am->error = 1;
+			return (1);
+		}
 		am->i += 2;
 		am->last_token_spe = 1;
 		return (1);
@@ -32,7 +37,7 @@ int h(t_am *am, char **line, t_token ***token_array, t_state *s)
 	return (0);
 }
 
-int i(t_am *am, char **line, t_token ***token_array, t_state *s)
+int	i(t_am *am, char **line, t_token ***token_array, t_state *s)
 {
 	if (line[0][am->i] == '<')
 	{
@@ -45,6 +50,11 @@ int i(t_am *am, char **line, t_token ***token_array, t_state *s)
 			return (1);
 		}
 		token_array[0] = mt_append(INFILE, NULL, token_array[0], s);
+		if (!(token_array[0]))
+		{
+			am->error = 1;
+			return (1);
+		}
 		am->i += 1;
 		am->last_token_spe = 1;
 		return (1);
@@ -52,7 +62,7 @@ int i(t_am *am, char **line, t_token ***token_array, t_state *s)
 	return (0);
 }
 
-int oa(t_am *am, char **line, t_token ***token_array, t_state *s)
+int	oa(t_am *am, char **line, t_token ***token_array, t_state *s)
 {
 	if (line[0][am->i] == '>' && line[0][am->i + 1] == '>')
 	{
@@ -65,6 +75,11 @@ int oa(t_am *am, char **line, t_token ***token_array, t_state *s)
 			return (1);
 		}
 		token_array[0] = mt_append(OUTFILE_APPEND, NULL, token_array[0], s);
+		if (!(token_array[0]))
+		{
+			am->error = 1;
+			return (1);
+		}
 		am->i += 2;
 		am->last_token_spe = 1;
 		return (1);
@@ -72,7 +87,7 @@ int oa(t_am *am, char **line, t_token ***token_array, t_state *s)
 	return (0);
 }
 
-int ot(t_am *am, char **line, t_token ***token_array, t_state *s)
+int	ot(t_am *am, char **line, t_token ***token_array, t_state *s)
 {
 	if (line[0][am->i] == '>')
 	{
@@ -85,6 +100,11 @@ int ot(t_am *am, char **line, t_token ***token_array, t_state *s)
 			return (1);
 		}
 		token_array[0] = mt_append(OUTFILE_TRUNCATE, NULL, token_array[0], s);
+		if (!(token_array[0]))
+		{
+			am->error = 1;
+			return (1);
+		}
 		am->i += 1;
 		am->last_token_spe = 1;
 		return (1);
@@ -92,7 +112,7 @@ int ot(t_am *am, char **line, t_token ***token_array, t_state *s)
 	return (0);
 }
 
-int p(t_am *am, char **line, t_token ***token_array, t_state *s)
+int	p(t_am *am, char **line, t_token ***token_array, t_state *s)
 {
 	if (line[0][am->i] == '|')
 	{
@@ -104,6 +124,11 @@ int p(t_am *am, char **line, t_token ***token_array, t_state *s)
 			return (1);
 		}
 		token_array[0] = mt_append(PIPE, NULL, token_array[0], s);
+		if (!(token_array[0]))
+		{
+			am->error = 1;
+			return (1);
+		}
 		am->i += 1;
 		am->last_token_spe = 1;
 		return (1);
