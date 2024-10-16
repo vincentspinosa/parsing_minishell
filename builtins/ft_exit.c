@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:03:49 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/10 17:30:40 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/16 03:07:42 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static int	isnum(char *str)
 		i++;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
+	if (!str[i])
+		return (0);
 	while (ft_isdigit(str[i]))
 		i++;
 	if (str[i])
@@ -69,16 +71,15 @@ int	ft_exit(char **array, t_state *s)
 	return (code);
 }
 
-/* int	main(int ac, char **av)
-{
-	t_state	*s;
+// int	main(int ac, char **av)
+// {
+// 	t_state	*s;
 
-	s = malloc(sizeof(t_state));
-	if (!s)
-		return (1);
-	s->exit_code = 999;
-	ft_exit(av, s);
-	printf("Exit return code : %i\n", s->exit_code);
-	if (ac)
-		return (0);
-} */
+// 	s = malloc(sizeof(t_state));
+// 	if (!s)
+// 		return (1);
+// 	s->exit_code = ft_exit(av, s);
+// 	printf("Exit return code : %i\n", s->exit_code);
+// 	if (ac)
+// 		return (0);
+// }
