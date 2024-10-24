@@ -6,7 +6,7 @@
 /*   By: vispinos <vispinos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:45:47 by vispinos          #+#    #+#             */
-/*   Updated: 2024/10/24 12:57:09 by vispinos         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:10:11 by vispinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static int	env_or_in_env(void *elem, char **env)
 {
-	if (!elem)
-		return (0);
 	if (elem == env)
 		return (1);
 	while (*(env))
@@ -50,7 +48,7 @@ void	shallow_clear2(t_list **gc, char **env)
 	prev = NULL;
 	while (ptr)
 	{
-		if (env_or_in_env(ptr->content, env) == 0)
+		if (ptr->content && env_or_in_env(ptr->content, env) == 0)
 			set_and_free(gc, &ptr, &prev);
 		else
 			prev = ptr;
